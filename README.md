@@ -7,18 +7,11 @@
 
 
 ## Përshkrimi i server.js
-##### 1.Përcaktimi i Portit dhe Lidhjes: Serveri vendos portin e tij (58901) dhe pret lidhje nga klientët duke përdorur IP-në 0.0.0.0, që lejon akses nga çdo pajisje në rrjet.
-##### 2.Lidhja e Klientëve: Për çdo klient që lidhet, serveri printon adresën e tij të IP-së dhe portin.
-##### 3.Login dhe Privilegje të Ndryshme:
-##### -Login-i: Kur klienti dërgon fjalën kyçe "login", serveri i kërkon përdoruesit emrin e përdoruesit dhe fjalëkalimin.
-##### -Qasje të Plotë (read, write, execute): Nëse përdoruesi hyn me kredencialet vera veraLlugiqi, serveri i jep akses për të lexuar, shkruar dhe ekzekutuar file në server.
-##### -Qasje të Kufizuar (read): Për përdorues të tjerë (p.sh., tringa tringaBaftiu, suhejla suhejlaHoxha), serveri lejon vetëm qasje për lexim të file readonly.txt.
-#####4.Veprime të File-ve:
-##### -Leximi i File-ve: Serveri lexon përmbajtjen e file-it readonly.txt dhe e dërgon te klienti me privilegjet përkatëse.
-##### -Shkrimi në File: Klienti me qasje të plotë mund të krijojë dhe shtojë përmbajtje në një file specifik.
-##### -Ekzekutimi i File-ve: Serveri ekzekuton një file të caktuar (nëse është i lejuar) për klientin me privilegje të plota.
-##### 5.Mbyllja e Lidhjes: Kur klienti shkëputet, serveri shfaq një mesazh për mbylljen e lidhjes.
-
+##### -Server TCP: Dëgjon për lidhje nga klientët dhe printon IP dhe portin e tyre.
+##### -Login dhe Privilegje:
+#####       -Qasje të Plotë (read, write, execute) për përdoruesin vera veraLlugiqi.
+#####       -Qasje e Kufizuar (read) për përdoruesit e tjerë.
+##### -Veprime të File-ve: Leximi, shkrimi dhe ekzekutimi i file-ve në varësi të privilegjeve.
 
 ## Përshkrimi i client.js:
 
