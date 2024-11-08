@@ -10,4 +10,11 @@ const server = net.createServer((socket) => {
         'port',
         socket.remotePort
     );
-   
+   // beginning of getting data from the client
+   socket.on('data', (buffer) => { 
+    console.log( 
+        'Request from',
+        socket.remoteAddress,
+        'port',
+        socket.remotePort
+    );
