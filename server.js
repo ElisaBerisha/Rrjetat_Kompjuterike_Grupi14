@@ -29,3 +29,15 @@ const server = net.createServer((socket) => {
          console.log("Ky perdorues ka privilegjet: read, write, execute");
          // giving permission to read at a given file
          socket.write("\nDuke shfaqur skedarët aktual të direktorise...");
+         
+         fs.readdir(__dirname, (err, files) => {
+            if (err)
+                socket.write(err);
+            else {
+                socket.write("\nEmrat e file-ve ne kete direktori:");
+                files.forEach(file => {
+                    socket.write(file + "\n");
+                });
+            }
+            socket.write("\nShkruani nje veprim (ne lowercase): write, execute, or read");
+        });
