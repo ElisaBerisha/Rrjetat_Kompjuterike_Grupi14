@@ -41,7 +41,7 @@ const server = net.createServer((socket) => {
             }
             socket.write("\nShkruani nje veprim (ne lowercase): write, execute, or read");
         });
-        
+
         socket.on('data', (action) => {
             action = action.toString().trim().toLowerCase();
                 if (action === "write") {
@@ -64,3 +64,14 @@ const server = net.createServer((socket) => {
                             });
                         });
                     });
+                } else if (action === "execute") {
+                    socket.write("\nCilin file doni te ekzekutoni?");
+                            fs.readdir(__dirname, (err, files) => {
+                                if (err)
+                                    socket.write(err);
+                                else {
+                                    socket.write("\nEmrat e file-ve ne kete direktori:");
+                                    files.forEach(file => {
+                                        socket.write(file + "\n");
+                                    })
+                                }
