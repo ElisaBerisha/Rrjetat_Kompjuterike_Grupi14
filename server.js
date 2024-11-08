@@ -29,7 +29,7 @@ const server = net.createServer((socket) => {
          console.log("Ky perdorues ka privilegjet: read, write, execute");
          // giving permission to read at a given file
          socket.write("\nDuke shfaqur skedarët aktual të direktorise...");
-         
+
          fs.readdir(__dirname, (err, files) => {
             if (err)
                 socket.write(err);
@@ -41,3 +41,26 @@ const server = net.createServer((socket) => {
             }
             socket.write("\nShkruani nje veprim (ne lowercase): write, execute, or read");
         });
+        
+        socket.on('data', (action) => {
+            action = action.toString().trim().toLowerCase();
+                if (action === "write") {
+                    socket.write("Sheno emrin e fajllit qe do te shenoni(.txt file): ");
+
+                    socket.once('data', (fileName) => {
+                        fileName = fileName.toString().trim();
+                        socket.write(`Permbajtja per t'u shkruajtur ${fileName}: `);
+
+                        // Trajto përmbajtjen që do të shkruhet në example.txt
+                        socket.once('data', (content) => {
+                            content = content.toString().trim();
+                            // Shkruani përmbajtjen e marrë në skedarin e specifikuar
+                            fs.appendFile(fileName, content, (err) => {
+                                if (err) {
+                                    socket.write(`Gabim gjate shkrimit ne ${fileName}.`);
+                                } else {
+                                    socket.write(`Permbajtja u shkrua me sukses ne ${fileName}`);
+                                }
+                            });
+                        });
+                    });
