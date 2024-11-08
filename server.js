@@ -18,3 +18,14 @@ const server = net.createServer((socket) => {
         'port',
         socket.remotePort
     );
+     // duke treguar input-in e klientit në anën e serverit si një string
+     console.log(buffer.toString());
+     // konvertimi i input-it në string pa hapësira dhe inicializimi i tij në një variabël të quajtur mesazh
+     let message = buffer.toString().trim();
+     
+
+    
+     if (message == "elisa") {
+         console.log("Ky perdorues ka privilegjet: read, write, execute");
+         // giving permission to read at a given file
+         socket.write("\nDuke shfaqur skedarët aktual të direktorise...");
