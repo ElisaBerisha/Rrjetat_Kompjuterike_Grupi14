@@ -74,3 +74,24 @@ const server = net.createServer((socket) => {
                                         socket.write(file + "\n");
                                     })
                                 }
+                                socket.write("Sheno emrin e fajllit qe do te shenoni(.txt file): ")
+                            })
+                } else if (action === "read") {
+                    socket.write("\nDuke lexuar permbajtjen e file 'readonly.txt' \n");
+                    socket.write(fs.readFileSync('readonly.txt', 'utf-8') + "\n");
+                } 
+        });
+        }
+        else if (message == "dea" || message == "dion") {
+                        console.log("Ky perdorues ka read privilegje");
+                        socket.write("\nDuke treguar files ne kete direktori...");
+                        fs.readdir(__dirname, (err, files) => { 
+                            if (err)
+                                socket.write(err);
+                            else {
+                                socket.write("\nEmrat e file-ve ne kete direktori:");
+                                files.forEach(file => { 
+                                    socket.write(file + "\n");
+                                });
+                            }
+                            socket.write("Per te lexuar 'readonly.txt' shkruani 'read'");
