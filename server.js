@@ -124,3 +124,23 @@ else if (message == "write.txt") {
             socket.write("\nDuke lexuar permbajtjen e file 'write.txt' \n");
             socket.write(fs.readFileSync('write.txt', 'utf-8') + "\n");
 }
+else if (message == "readonly.txt") {
+    exec("write.txt", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+    socket.write("\nDuke lexuar permbajtjen e file 'readonly.txt' \n");
+    socket.write(fs.readFileSync('readonly.txt', 'utf-8') + "\n");
+}
+else {
+    socket.write(message.toUpperCase());
+}
+
+});
