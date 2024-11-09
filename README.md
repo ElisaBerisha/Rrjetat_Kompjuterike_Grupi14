@@ -1,5 +1,5 @@
 # Rrjetat_Kompjuterike_Grupi14
-##### Ky eshte nje projekt i punuar nga studente te vitit te dyte te Universitetit "Hasan Prishtina"-Fakulteti i Inxhinieris Elektrike dhe Kompjuterike, ne Lenden "Rrjeta Kompjuterike"-Prof.Blerim Rexha dhe Asc.Mergim Hoti.
+##### Ky eshte nje projekt i punuar nga studente te vitit te trete te Universitetit "Hasan Prishtina"-Fakulteti i Inxhinieris Elektrike dhe Kompjuterike, ne Lenden "Rrjeta Kompjuterike"-Prof.Blerim Rexha dhe Asc.Mergim Hoti.
 
 
 ## Pershkrim i projektit
