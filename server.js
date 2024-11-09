@@ -54,7 +54,7 @@ const server = net.createServer((socket) => {
                        
                         socket.once('data', (content) => {
                             content = content.toString().trim();
-                           
+                            fs.appendFile(fileName, content, (err) => {         
                                 if (err) {
                                     socket.write(`Gabim gjate shkrimit ne ${fileName}.`);
                                 } else {
@@ -141,6 +141,15 @@ else if (message == "readonly.txt") {
 }
 else {
     socket.write(message.toUpperCase());
-}
+ }
 
 });
+
+socket.on('end', () => {
+    console.log('Closed', socket.remoteAddress, 'port', socket.remotePort);
+   });
+});
+
+server.maxConnections = 10;
+var port = 837;
+server.listen(port, '0.0.0.0');
