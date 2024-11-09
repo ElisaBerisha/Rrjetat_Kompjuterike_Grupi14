@@ -14,18 +14,11 @@
 ##### -Veprime të File-ve: Leximi, shkrimi dhe ekzekutimi i file-ve në varësi të privilegjeve.
 
 ## Përshkrimi i client.js:
+##### Klient TCP: Lidhet me serverin dhe dërgon/lexon mesazhe përmes terminalit.
+##### Veprime: Dërgon komanda për login dhe ndërvepron me serverin për të lexuar, shkruar ose ekzekutuar file sipas privilegjeve.
 
-
-
-
-
-
-
-
-
-
-
-
+## Rezultati:
+##### Ky projekt lejon klientët të lidhen me një server TCP dhe të kryejnë veprime mbi file bazuar në privilegje: përdoruesit me qasje të plotë mund të lexojnë, shkruajnë dhe ekzekutojnë file, ndërsa të tjerët mund të lexojnë vetëm. Klientët komunikojnë me serverin përmes komandave në terminal. Serveri menaxhon privilegjet dhe përgjigjet sipas kërkesave të klientëve.
 
 ## Kontribues ne kete projekt jane:
 ##### -[Elisa Berisha ](https://github.com/ElisaBerisha)
