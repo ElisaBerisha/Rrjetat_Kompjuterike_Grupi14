@@ -9,7 +9,7 @@
 ## Përshkrimi i server.js
 ##### -Server TCP: Dëgjon për lidhje nga klientët dhe printon IP dhe portin e tyre.
 ##### -Login dhe Privilegje:
-#####       -Qasje të Plotë (read, write, execute) për përdoruesin vera veraLlugiqi.
+#####       -Qasje të Plotë (read, write, execute) për perdouresin elisa.
 #####       -Qasje e Kufizuar (read) për përdoruesit e tjerë.
 ##### -Veprime të File-ve: Leximi, shkrimi dhe ekzekutimi i file-ve në varësi të privilegjeve.
 
