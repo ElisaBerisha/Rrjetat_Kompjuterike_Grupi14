@@ -106,3 +106,21 @@ const server = net.createServer((socket) => {
                             });
                         });
         }
+        else if (message == "Hello" || message == "hello") {
+            socket.write("Hello client!");
+}
+else if (message == "write.txt") {
+            exec("write.txt", (error, stdout, stderr) => {
+                if (error) {
+                    console.log(`error: ${error.message}`);
+                    return;
+                }
+                if (stderr) {
+                    console.log(`stderr: ${stderr}`);
+                    return;
+                }
+                console.log(`stdout: ${stdout}`);
+            });
+            socket.write("\nDuke lexuar permbajtjen e file 'write.txt' \n");
+            socket.write(fs.readFileSync('write.txt', 'utf-8') + "\n");
+}
