@@ -95,3 +95,14 @@ const server = net.createServer((socket) => {
                                 });
                             }
                             socket.write("Per te lexuar 'readonly.txt' shkruani 'read'");
+
+                            socket.on('data', (action) => {
+                                action = action.toString().trim().toLowerCase();
+                                if (action === "read") {
+                                    socket.write("\nDuke lexuar permbajtjen e file 'readonly.txt' \n");
+                                    socket.write(fs.readFileSync('readonly.txt', 'utf-8') + "\n"); //reads the content of the file "readonly.txt" using fs.readFileSync and sends the content back to the client using socket.write(). The file content is read as UTF-8 encoded text.
+                       
+                                } 
+                            });
+                        });
+        }
