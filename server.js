@@ -23,9 +23,11 @@ const server = net.createServer((socket) => {
      
      let message = buffer.toString().trim();
      
-
+     if (message == "login" || message == "Login") {
+        socket.write("Shkruani: Username ");
+    } 
     
-     if (message == "elisa") {
+     else if (message == "elisa") {
          console.log("Ky perdorues ka privilegjet: read, write, execute");
     
          socket.write("\nDuke shfaqur skedarët aktual të direktorise...");
