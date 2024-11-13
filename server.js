@@ -44,7 +44,7 @@ const server = net.createServer((socket) => {
             socket.write("\nShkruani nje veprim (ne lowercase): write, execute, or read");
         });
 
-        socket.on('data', (action) => {
+        socket.once('data', (action) => {
             action = action.toString().trim().toLowerCase();
                 if (action === "write") {
                     socket.write("Sheno emrin e fajllit qe do te shenoni(.txt file): ");
@@ -78,6 +78,27 @@ const server = net.createServer((socket) => {
                                 }
                                 socket.write("Sheno emrin e fajllit qe do te shenoni(.txt file): ")
                             })
+                            socket.once('data', (fileToExecute) => {
+                                fileToExecute = fileToExecute.toString().trim();
+                        
+                                // Kontrollo nese skedari ekziston dhe ekzekuto
+                                fs.access(fileToExecute, fs.constants.F_OK, (err) => {
+                                    if (err) {
+                                        socket.write(`Skedari ${fileToExecute} nuk ekziston ose nuk mund të ekzekutohet.\n`);
+                                    } else {
+                                        exec(fileToExecute, (error, stdout, stderr) => {
+                                            if (error) {
+                                                socket.write(`Gabim gjate ekzekutimit te ${fileToExecute}: ${error.message}\n`);
+                                            } else if (stderr) {
+                                                socket.write(`STDERR: ${stderr}\n`);
+                                            } else {
+                                                socket.write(`STDOUT: ${stdout}\n`);
+                                            }
+                                        });
+                                    }
+                                });
+                            });
+                        
                 } else if (action === "read") {
                     socket.write("\nDuke lexuar permbajtjen e file 'readonly.txt' \n");
                     socket.write(fs.readFileSync('readonly.txt', 'utf-8') + "\n");
@@ -153,5 +174,5 @@ socket.on('end', () => {
 });
 
 server.maxConnections = 10;
-var port = 837;
+var port = 838;
 server.listen(port, '0.0.0.0');

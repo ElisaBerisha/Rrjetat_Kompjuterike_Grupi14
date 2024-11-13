@@ -2,8 +2,8 @@ const net = require('net');
 const readline = require('readline');
 
 // Zëvendësoni 'SERVER_IP' me adresën aktuale të IP serverit tuaj
-const host = '192.168.0.10';
-var port = 837; 
+const host = '172.20.10.7';
+var port = 838; 
 
 const client = new net.Socket();
 
