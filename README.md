@@ -41,7 +41,7 @@
  ##### -Për elisa: Komandat "write", "execute", dhe "read" janë të disponueshme.
  ##### -Për dea dhe dion: Mund të përdorni vetëm komandën "read" për të lexuar readonly.txt..
 
- #          Ky README përshkruan funksionalitetin e projektit, përbërësit dhe hapat e përdorimit.
+ ###  Ky README përshkruan funksionalitetin e projektit, përbërësit dhe hapat e përdorimit.
 
 ## Kontribues ne kete projekt jane:
 ##### -[Elisa Berisha ](https://github.com/ElisaBerisha)
