@@ -15,7 +15,7 @@
 ##### write.txt: Një skedar që përdoret vetëm për shkrim, ku përdoruesi me privilegje të shkrimit mund të shtojë përmbajtje.
 
 ## Përshkrimi i server.js
-##### Serveri ofron një mekanizëm login, ku përdoruesit mund të futen me emrat elisa, dea, ose dion. Në varësi të përdoruesit, u caktohen privilegje të ndryshme:
+##### Serveri ofron një mekanizëm login, ku përdoruesit mund të futen me emrat elisa, dea, ose dion. Në varësi të përdoruesit u caktohen privilegje të ndryshme:
 ##### -Elisa: Ka qasje për të lexuar, shkruar, dhe ekzekutuar.
  ##### -Dea dhe Dion: Kanë vetëm privilegje leximi.
 
