@@ -11,7 +11,7 @@
 ## Skedarët
 ##### server.js: Skedari kryesor që krijon serverin dhe përpunon kërkesat e klientit.
 ##### client.js: Skedari që lidhet me serverin dhe mundëson ndërveprimin e përdoruesit me serverin përmes komandave të tastierës.
-##### readonly.txt: Një skedar që përdoret vetëm për lexim, ku përdoruesit pa privilegje shkrimi mund të kenë qasje.
+##### readonly.txt: Një skedar që përdoret vetëm për lexim, ku përdoruesit me privilegje shkrimi mund të kenë qasje.
 ##### write.txt: Një skedar që përdoret vetëm për shkrim, ku përdoruesi me privilegje të shkrimit mund të shtojë përmbajtje.
 
 ## Përshkrimi i server.js
