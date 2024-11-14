@@ -44,23 +44,23 @@ const server = net.createServer((socket) => {
             socket.write("\nShkruani nje veprim (ne lowercase): write, execute, or read");
         });
 
-        socket.once('data', (action) => {
+        socket.on('data', (action) => {
             action = action.toString().trim().toLowerCase();
                 if (action === "write") {
                     socket.write("Sheno emrin e fajllit qe do te shenoni(.txt file): ");
 
                     socket.once('data', (fileName) => {
                         fileName = fileName.toString().trim();
-                        socket.write(`Permbajtja per t'u shkruajtur ${fileName}: `);
+                        socket.write('Permbajtja per tu shkruajtur ${fileName}:');
 
                        
                         socket.once('data', (content) => {
                             content = content.toString().trim();
                             fs.appendFile(fileName, content, (err) => {         
                                 if (err) {
-                                    socket.write(`Gabim gjate shkrimit ne ${fileName}.`);
+                                    socket.write('Gabim gjate shkrimit ne ${fileName}');
                                 } else {
-                                    socket.write(`Permbajtja u shkrua me sukses ne ${fileName}`);
+                                    socket.write('Permbajtja u shkrua me sukses ne ${fileName}');
                                 }
                             });
                         });
@@ -78,27 +78,6 @@ const server = net.createServer((socket) => {
                                 }
                                 socket.write("Sheno emrin e fajllit qe do te shenoni(.txt file): ")
                             })
-                            socket.once('data', (fileToExecute) => {
-                                fileToExecute = fileToExecute.toString().trim();
-                        
-                                // Kontrollo nese skedari ekziston dhe ekzekuto
-                                fs.access(fileToExecute, fs.constants.F_OK, (err) => {
-                                    if (err) {
-                                        socket.write(`Skedari ${fileToExecute} nuk ekziston ose nuk mund të ekzekutohet.\n`);
-                                    } else {
-                                        exec(fileToExecute, (error, stdout, stderr) => {
-                                            if (error) {
-                                                socket.write(`Gabim gjate ekzekutimit te ${fileToExecute}: ${error.message}\n`);
-                                            } else if (stderr) {
-                                                socket.write(`STDERR: ${stderr}\n`);
-                                            } else {
-                                                socket.write(`STDOUT: ${stdout}\n`);
-                                            }
-                                        });
-                                    }
-                                });
-                            });
-                        
                 } else if (action === "read") {
                     socket.write("\nDuke lexuar permbajtjen e file 'readonly.txt' \n");
                     socket.write(fs.readFileSync('readonly.txt', 'utf-8') + "\n");
@@ -133,19 +112,19 @@ const server = net.createServer((socket) => {
             socket.write("Hello client!");
 }
 else if (message == "write.txt") {
-            exec("write.txt", (error, stdout, stderr) => {
-                if (error) {
-                    console.log(`error: ${error.message}`);
-                    return;
-                }
-                if (stderr) {
-                    console.log(`stderr: ${stderr}`);
-                    return;
-                }
-                console.log(`stdout: ${stdout}`);
-            });
-            socket.write("\nDuke lexuar permbajtjen e file 'write.txt' \n");
-            socket.write(fs.readFileSync('write.txt', 'utf-8') + "\n");
+    exec("write.txt", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+    socket.write("\nDuke lexuar permbajtjen e file 'write.txt' \n");
+    socket.write(fs.readFileSync('write.txt', 'utf-8') + "\n");
 }
 else if (message == "readonly.txt") {
     exec("write.txt", (error, stdout, stderr) => {
@@ -164,15 +143,14 @@ else if (message == "readonly.txt") {
 }
 else {
     socket.write(message.toUpperCase());
- }
+}
 
-});
-
+// Vendosim socket.on('end') jashtë bllokut të 'else' por brenda funksionit kryesor
 socket.on('end', () => {
     console.log('Closed', socket.remoteAddress, 'port', socket.remotePort);
-   });
+});
 });
 
 server.maxConnections = 10;
-var port = 838;
+var port = 837;
 server.listen(port, '0.0.0.0');
