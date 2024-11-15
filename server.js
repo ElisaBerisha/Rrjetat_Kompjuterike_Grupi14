@@ -73,3 +73,56 @@ const server = net.createServer((socket) => {
                         });
                     });
                 }
+                else if (message === "execute") {
+                    socket.write("\nShkruani emrin e skedarit që doni të ekzekutoni: ");
+                    fs.readdir(__dirname, (err, files) => {
+                        if (err) socket.write(err.toString());
+                        else {
+                            socket.write("\nEmrat e file-ve në këtë direktori:");
+                            files.forEach(file => socket.write(file + "\n"));
+                        }
+                    });
+
+                    socket.once('data', (fileToExecuteBuffer) => {
+                        let fileToExecute = fileToExecuteBuffer.toString().trim();
+                        fs.access(fileToExecute, fs.constants.F_OK, (err) => {
+                            if (err) {
+                                socket.write(`Skedari ${fileToExecute} nuk ekziston ose nuk mund të ekzekutohet.\n`);
+                            } else {
+                                exec(fileToExecute, (error, stdout, stderr) => {
+                                    if (error) socket.write(`Gabim gjatë ekzekutimit të ${fileToExecute}: ${error.message}\n`);
+                                    else if (stderr) socket.write(`STDERR: ${stderr}\n`);
+                                    else socket.write(`STDOUT: ${stdout}\n`);
+                                });
+                            }
+                        });
+                    });
+                } 
+                else if (message === "read") {
+                    socket.write("\nDuke lexuar përmbajtjen e file 'readonly.txt' \n");
+                    socket.write(fs.readFileSync('readonly.txt', 'utf-8') + "\n");
+                }
+            } else if (currentUser === "dea" || currentUser === "dion") {
+                if (message === "read") {
+                    socket.write("\nDuke lexuar përmbajtjen e file 'readonly.txt' \n");
+                    socket.write(fs.readFileSync('readonly.txt', 'utf-8') + "\n");
+                } else {
+                    socket.write("Ju keni vetëm privilegje leximi.");
+                }
+            }
+        } else {
+            socket.write("Duhet të shkruani 'login' për të vazhduar.\n");
+        }
+    });
+
+    socket.on('end', () => {
+        console.log('Closed', socket.remoteAddress, 'port', socket.remotePort);
+        // Reset login state on connection close
+        loggedIn = false;
+        currentUser = null;
+    });
+});
+
+server.maxConnections = 10;
+var port = 838;
+server.listen(port, '0.0.0.0');
