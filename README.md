@@ -3,22 +3,45 @@
 
 
 ## Pershkrim i projektit
-##### Ky projekt përbëhet nga dy skripta në JavaScript për një server dhe disa klient që komunikojnë përmes një lidhjeje TCP duke përdorur modulet net dhe fs të Node.js. Projekti synon të simulojë një sistem login-i me privilegje të ndryshme për përdoruesit dhe qasje në file. Më poshtë është një përshkrim i shkurtër për secilin skedar dhe funksionet kryesore që ata kryejnë.
+##### Ky projekt është një aplikacion server-klient i ndërtuar me Node.js, i cili krijon një server TCP që lejon klientët të lidhen dhe të kryejnë veprime të ndryshme mbi skedarët, si lexim, shkrim, dhe ekzekutim, bazuar në privilegjet e përdoruesit. Përdoruesi mund të hyjë në sistem përmes komandës "login" dhe më pas, në bazë të emrit të përdoruesit që fut, i caktohen privilegje të ndryshme. 
 
+##### Ky projekt përdor Node.js me modulin net për të krijuar lidhjen server-klient, fs për të menaxhuar skedarët, dhe child_process për ekzekutimin e komandave.
+
+
+## Skedarët
+##### server.js: Skedari kryesor që krijon serverin dhe përpunon kërkesat e klientit.
+##### client.js: Skedari që lidhet me serverin dhe mundëson ndërveprimin e përdoruesit me serverin përmes komandave të tastierës.
+##### readonly.txt: Një skedar që përdoret vetëm për lexim, ku përdoruesit me privilegje shkrimi mund të kenë qasje.
+##### write.txt: Një skedar që përdoret vetëm për shkrim, ku përdoruesi me privilegje të shkrimit mund të shtojë përmbajtje.
 
 ## Përshkrimi i server.js
-##### -Server TCP: Dëgjon për lidhje nga klientët dhe printon IP dhe portin e tyre.
-##### -Login dhe Privilegje:
-#####       -Qasje të Plotë (read, write, execute) për perdouresin elisa.
-#####       -Qasje e Kufizuar (read) për përdoruesit e tjerë.
-##### -Veprime të File-ve: Leximi, shkrimi dhe ekzekutimi i file-ve në varësi të privilegjeve.
+##### Serveri ofron një mekanizëm login, ku përdoruesit mund të futen me emrat elisa, dea, ose dion. Në varësi të përdoruesit u caktohen privilegje të ndryshme:
+##### -Elisa: Ka qasje për të lexuar, shkruar, dhe ekzekutuar.
+ ##### -Dea dhe Dion: Kanë vetëm privilegje leximi.
 
-## Përshkrimi i client.js:
-##### Klient TCP: Lidhet me serverin dhe dërgon/lexon mesazhe përmes terminalit.
-##### Veprime: Dërgon komanda për login dhe ndërvepron me serverin për të lexuar, shkruar ose ekzekutuar file sipas privilegjeve.
+### Funksionet Kryesore
+ ##### -Leximi i Skedarëve: Të gjithë përdoruesit mund të lexojnë skedarin readonly.txt duke shkruar komandën "read".
+##### -Shkrimi në Skedar: Vetëm përdoruesi elisa ka privilegjin të shkruajë në skedarë të tjerë dhe të shtojë përmbajtje në skedarë të specifikuar.
+##### -Ekzekutimi i Skedarëve: Vetëm përdoruesi elisa mund të ekzekutojë skedarë të tjerë në server duke përdorur komandën "execute".
 
-## Rezultati:
-##### Ky projekt lejon klientët të lidhen me një server TCP dhe të kryejnë veprime mbi file bazuar në privilegje: përdoruesit me qasje të plotë mund të lexojnë, shkruajnë dhe ekzekutojnë file, ndërsa të tjerët mund vetëm të lexojnë. Klientët komunikojnë me serverin përmes komandave në terminal. Serveri menaxhon privilegjet dhe përgjigjet sipas kërkesave të klientëve.
+##### Serveri është i konfiguruar për të pranuar deri në 10 lidhje të klientëve njëkohësisht
+### Si Menaxhohen Lidhjet e Shumta
+##### Kur një klient i ri lidhet me serverin:
+
+##### -Serveri pranon lidhjen dhe krijon një sesion të veçantë për atë klient, duke i lejuar secilit klient të kryejë veprime të pavarura nga të tjerët.
+##### -Në rast se arrin limitin prej 10 klientësh, serveri nuk do të pranojë lidhje të reja deri sa të mbyllet një lidhje ekzistuese.
+
+## Pershkrimi i client.js:
+##### Klienti lidhet me serverin dhe i lejon përdoruesit të fusë komanda për të kryer veprime të ndryshme. Pas lidhjes, klienti mund të fusë komandën "login" për të filluar sesionin e përdoruesit. Pas login, klienti i përgjigjet kërkesave të serverit bazuar në komandat dhe privilegjet e caktuara të përdoruesit.
+
+### Hapat për Përdorim
+ ##### -Filloni Serverin duke ekzekutuar node server.js.
+ ##### -Lidheni Klientin duke ekzekutuar node client.js dhe shkruani komandën "login" për të nisur procesin e kyçjes.
+##### Veprimet që mund të kryeni:
+ ##### -Për elisa: Komandat "write", "execute", dhe "read" janë të disponueshme.
+ ##### -Për dea dhe dion: Mund të përdorni vetëm komandën "read" për të lexuar readonly.txt..
+
+ ###  Ky README përshkruan funksionalitetin e projektit, përbërësit dhe hapat e përdorimit.
 
 ## Kontribues ne kete projekt jane:
 ##### -[Elisa Berisha ](https://github.com/ElisaBerisha)
