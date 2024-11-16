@@ -33,6 +33,8 @@
 
 
 ![Pamje nga terminali i server.js](https://mail.google.com/mail/u/0?ui=2&ik=4d88689745&attid=0.1&permmsgid=msg-f:1815898395368460451&th=19335df8342390a3&view=att&disp=safe&realattid=f_m3kxsfd90&zw)
+[](https://mail.google.com/mail/u/0?ui=2&ik=4d88689745&attid=0.2&permmsgid=msg-f:1815898395368460451&th=19335df8342390a3&view=att&disp=safe&realattid=f_m3kxslex1&zw)
+[](https://mail.google.com/mail/u/0?ui=2&ik=4d88689745&attid=0.3&permmsgid=msg-f:1815898395368460451&th=19335df8342390a3&view=att&disp=safe&realattid=f_m3kxslf52&zw)
 
 ## Pershkrimi i client.js:
 ##### Klienti lidhet me serverin dhe i lejon përdoruesit të fusë komanda për të kryer veprime të ndryshme. Pas lidhjes, klienti mund të fusë komandën "login" për të filluar sesionin e përdoruesit. Pas login, klienti i përgjigjet kërkesave të serverit bazuar në komandat dhe privilegjet e caktuara të përdoruesit.
