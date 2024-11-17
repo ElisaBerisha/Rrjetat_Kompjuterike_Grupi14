@@ -46,7 +46,7 @@
 
  ###  Ky README përshkruan funksionalitetin e projektit, përbërësit dhe hapat e përdorimit.
 
-![terminali i server.js](images/https://github.com/ElisaBerisha/Rrjetat_Kompjuterike_Grupi14/blob/main/images/Screenshot%202024-11-16%20174111.png)
+![terminali i server.js](images/Screenshot%202024-11-16%20174111.png)
 
 
 ## Kontribues ne kete projekt jane:
