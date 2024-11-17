@@ -31,6 +31,9 @@
 ##### -Serveri pranon lidhjen dhe krijon një sesion të veçantë për atë klient, duke i lejuar secilit klient të kryejë veprime të pavarura nga të tjerët.
 ##### -Në rast se arrin limitin prej 10 klientësh, serveri nuk do të pranojë lidhje të reja deri sa të mbyllet një lidhje ekzistuese.
 
+
+
+
 ## Pershkrimi i client.js:
 ##### Klienti lidhet me serverin dhe i lejon përdoruesit të fusë komanda për të kryer veprime të ndryshme. Pas lidhjes, klienti mund të fusë komandën "login" për të filluar sesionin e përdoruesit. Pas login, klienti i përgjigjet kërkesave të serverit bazuar në komandat dhe privilegjet e caktuara të përdoruesit.
 
