@@ -46,7 +46,7 @@
 
  ###  Ky README përshkruan funksionalitetin e projektit, përbërësit dhe hapat e përdorimit.
 
-![terminali i server.js](images/Screenshot2024-11-16174111.png)
+![terminali i server.js](images/Screenshot2024-11-16 174111.png)
 
 
 ## Kontribues ne kete projekt jane:
