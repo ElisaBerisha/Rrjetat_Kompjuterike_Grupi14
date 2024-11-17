@@ -46,7 +46,18 @@
 
  ###  Ky README përshkruan funksionalitetin e projektit, përbërësit dhe hapat e përdorimit.
 
+Terminali i server.js:
+
 ![terminali i server.js](images/Screenshot%202024-11-16%20174111.png)
+![terminali i server.js](images/Screenshot%202024-11-16%20174127.png)
+![terminali i server.js](images/Screenshot%202024-11-16%20174142.png)
+
+Terminali i client.js
+
+![terminali i client.js](images/Screenshot%202024-11-16%20174209.png)
+![terminali i client.js](images/Screenshot%202024-11-16%20174223.png)
+![terminali i client.js](images/Screenshot%202024-11-16%20174233.png)
+![terminali i client.js](images/Screenshot%202024-11-16%20174242.png)
 
 
 ## Kontribues ne kete projekt jane:
