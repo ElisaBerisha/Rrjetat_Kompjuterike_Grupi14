@@ -43,6 +43,9 @@
 
  ###  Ky README përshkruan funksionalitetin e projektit, përbërësit dhe hapat e përdorimit.
 
+![terminali i server.js](images/Screenshot2024-11-16174111.png)
+
+
 ## Kontribues ne kete projekt jane:
 ##### -[Elisa Berisha ](https://github.com/ElisaBerisha)
 ##### -[Dea Limoni ](https://github.com/DeaLimoni)
